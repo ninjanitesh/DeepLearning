@@ -23,17 +23,16 @@ st.title('Diabetes Prediction App')
 # Input fields for user data
 st.write("Enter the following health indicators:")
 
-# Create input fields for each feature, matching the HTML form
+# Create sliders for input features where appropriate
 
 HighBP = st.selectbox('High Blood Pressure:', options=[0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
 HighChol = st.selectbox('High Cholesterol:', options=[0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-BMI = st.number_input('BMI:', min_value=10.0, max_value=50.0, step=0.1)
+BMI = st.slider('BMI:', min_value=10.0, max_value=50.0, step=0.1)
 Smoker = st.selectbox('Smoker:', options=[0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
 PhysActivity = st.selectbox('Physical Activity:', options=[0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-GenHlth = st.selectbox('General Health (1=Excellent, 5=Poor):', options=[1, 2, 3, 4, 5])
-Age = st.selectbox('Age Category:', options=list(range(1, 14)), format_func=lambda x: [
-    "18-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", 
-    "60-64", "65-69", "70-74", "75-79", "80 or older"][x - 1])
+GenHlth = st.slider('General Health (1=Excellent, 5=Poor):', min_value=1, max_value=5, step=1)
+Age = st.slider('Age Category:', min_value=1, max_value=13, step=1, format="%d", 
+                help="Select age category (1=18-24, 2=25-29, ..., 13=80 or older)")
 Sex = st.selectbox('Sex:', options=[0, 1], format_func=lambda x: 'Male' if x == 1 else 'Female')
 
 # Display the button
